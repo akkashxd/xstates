@@ -88,8 +88,10 @@ function App() {
       {/* ✅ Display selected location */}
       {selectedCountry && selectedState && selectedCity && (
         <p className="selected-location">
-          You have selected: {selectedCity}, {selectedState}, {selectedCountry}
-        </p>
+  You selected <strong>{selectedCity}</strong>,{" "}
+  <span className="location-details">{selectedState}, {selectedCountry}</span>
+</p>
+
       )}
     </div>
   );
