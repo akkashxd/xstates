@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  background-color: #1d2b3a;
   font-family: sans-serif;
 }
 
@@ -47,3 +47,12 @@ select:disabled {
   color: #888;
   cursor: not-allowed;
 }
+
+.selected-location {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
