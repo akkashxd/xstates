@@ -10,6 +10,7 @@ function App() {
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
 
+  // Fetch countries on first render
   useEffect(() => {
     fetch("https://crio-location-selector.onrender.com/countries")
       .then((res) => res.json())
@@ -17,6 +18,7 @@ function App() {
       .catch((err) => console.error("Error fetching countries:", err));
   }, []);
 
+  // When a country is selected
   const handleCountryChange = (e) => {
     const country = e.target.value;
     setSelectedCountry(country);
@@ -31,20 +33,20 @@ function App() {
       .catch((err) => console.error("Error fetching states:", err));
   };
 
+  // When a state is selected
   const handleStateChange = (e) => {
     const state = e.target.value;
     setSelectedState(state);
     setSelectedCity("");
     setCities([]);
 
-    fetch(
-      `https://crio-location-selector.onrender.com/country=${selectedCountry}/state=${state}/cities`
-    )
+    fetch(`https://crio-location-selector.onrender.com/country=${selectedCountry}/state=${state}/cities`)
       .then((res) => res.json())
       .then((data) => setCities(data))
       .catch((err) => console.error("Error fetching cities:", err));
   };
 
+  // When a city is selected
   const handleCityChange = (e) => {
     setSelectedCity(e.target.value);
   };
@@ -82,14 +84,15 @@ function App() {
           ))}
         </select>
       </div>
+
+      {/* ✅ Display selected location */}
+      {selectedCountry && selectedState && selectedCity && (
+        <p className="selected-location">
+          You have selected: {selectedCity}, {selectedState}, {selectedCountry}
+        </p>
+      )}
     </div>
   );
 }
-
-{selectedCountry && selectedState && selectedCity && (
-  <p className="selected-location">
-    You have selected: {selectedCity}, {selectedState}, {selectedCountry}
-  </p>
-)}
 
 export default App;
