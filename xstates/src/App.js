@@ -86,4 +86,10 @@ function App() {
   );
 }
 
+{selectedCountry && selectedState && selectedCity && (
+  <p className="selected-location">
+    You have selected: {selectedCity}, {selectedState}, {selectedCountry}
+  </p>
+)}
+
 export default App;
